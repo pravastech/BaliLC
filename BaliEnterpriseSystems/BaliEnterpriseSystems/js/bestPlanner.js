@@ -352,7 +352,7 @@ var BestPlanner = function() {
 				} else {
 					name = objSch.StudentName(objSch["stuGuid" + (Number(stdnum) + 1)]);
 				}
-		        $('#attendanceDiv').dialog({ draggable: true, autoOpen: true, title: 'Attendance - ' + name, position: [dleft, dtop],
+		        $('#attendanceDiv').dialog({ draggable: false, autoOpen: true, title: 'Attendance - ' + name, position: [dleft, dtop],
 		            open: function(event, ui) {
 		                //Set the DB Values
 		                setbackground(objSch["attend" + stdnum]);
@@ -481,8 +481,8 @@ var BestPlanner = function() {
 		            if (typeof objSch != 'undefined') {
 		                if (objSch.schDate != curDate || objSch.schFrom != curFrom) {
 		                    var odivslice = 'divSlice_' + objSch.schDate + '_' + objSch.schFrom;
-		                    divSlice = 'divSlice_' + curDate + '_' + curFrom
-		                    var theIndex = BestPlanner.MaxIndex(divSlice);
+		                    var ndivslice = 'divSlice_' + curDate + '_' + curFrom
+		                    var theIndex = BestPlanner.MaxIndex(ndivslice);
 		                    objSch.schDate = curDate;
 		                    objSch.schFrom = curFrom;
 		                    objSch.schTo = Number(curFrom) + 100;
@@ -491,9 +491,9 @@ var BestPlanner = function() {
 		                    BestPlanner.updScheduleInfo(objSch);
 		                    BestPlanner.ReIndex(odivslice);
 		                    BestPlanner.saveToDB(objSch);
+		                    BestPlanner.ReDraw(ndivslice);
 		                }
-		                BestPlanner.ReDraw(divSlice);
-                    }
+		            }
 		        }
 		    });
 		}
