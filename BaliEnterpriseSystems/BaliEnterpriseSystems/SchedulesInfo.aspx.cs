@@ -120,7 +120,8 @@ namespace BaliEnterpriseSystems
 
             int direction;
             int.TryParse(plannerdateNav, out direction);
-            DateTime today = Convert.ToDateTime(curPlannerDate);
+            DateTime today;
+            DateTime.TryParse(curPlannerDate, out today);
             if (selPlan.Equals("day"))
             {
                 today = today.AddDays(direction);

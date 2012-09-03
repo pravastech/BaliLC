@@ -40,12 +40,14 @@
 		$('form:first').submit();
 	}    
 	
-	function timeChangeSubmit(){
+	function timeChangeSubmit() {
+	    $('#curPlannerDate').val(BestPlanner.ToMMddyyyy(BestPlanner.plannerDate));
 	    $('#hdTimeChangeClicked').val('1');
 	    submit();
 	}
 	
-	function Show6To9Submit(id){
+	function Show6To9Submit(id) {
+	    $('#curPlannerDate').val(BestPlanner.ToMMddyyyy(BestPlanner.plannerDate));
 	    $('#'+id).val('1');
 	    submit();
 	}
