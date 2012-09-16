@@ -29,8 +29,8 @@
         }
     }
 </script>
-<asp:Literal ID="ltrMScript" runat="server">
-</asp:Literal>
+<%--<asp:Literal ID="ltrMScript" runat="server">--%>
+<%--</asp:Literal>--%>
 <asp:Literal ID="ltrScript" runat="server"></asp:Literal>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">

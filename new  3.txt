@@ -1,0 +1,42 @@
+Add Students:
+Table Name : BestStudent
+Columns:
+firstname, lastname, dob, gender, address, city state, zip
+Table : BestPrograms
+columns:
+programname, programtype, price
+Math, one-one, $20
+Math, Group, $10
+
+--SqlClient
+SqlConenction
+SqlCommand
+Reader
+
+Save Data,
+Insert into [table] (columns) value (?,?)
+Update
+Delete
+
+Select
+
+BestStudent bstd = new BestStudent();
+bstd.Load(
+10k - with fields (9k), 1k
+100 rows  - 1000k
+
+10k - 9k, 1k,
+100k - 9k, 100k = 109k
+
+
+String thtml = "<table><tr><td>"
+for(int i=0;i<100;i++){
+thtml += "<tr><td>,?td>"
+thtml += "<tr.<th><td>"
+}
+
+System.Text
+
+StringBuilder sb = new Stringbuilder()
+sb.append("<table><tr><td>");
+sb.append("<tr><td>");

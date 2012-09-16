@@ -64,6 +64,7 @@ namespace BaliEnterpriseSystems
 
                 StringBuilder sbg = new StringBuilder();
                 sbg.Append("<table style=\"width:100%;\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\" class=\"bestgrid\"><tr><th>Service Name</th><th>Allow View</th><th>Allow Add</th><th>Allow Edit</th><th>Allow Delete</th></tr>");
+                //sbg.Append("<table style=\"width:100%;\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\" class=\"bestgrid\"><tr><th></th><th><input type="+checkbox"/>Tick all view</th><th>Tick all add</th><th>tick all edit</th><th>tick all Delete</th></tr>"); 
                 for (int rnum = 0; rnum < uroles.TableRows.Count; rnum++)
                 {
                     string srclass = " class=" + ((rnum % 2 == 0) ? "\"grideven\"" : "\"gridodd\"");

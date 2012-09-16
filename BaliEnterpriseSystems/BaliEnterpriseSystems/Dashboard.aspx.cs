@@ -125,7 +125,11 @@ namespace BaliEnterpriseSystems
 
             ltrCommunication.Text = ComminicationHTML();
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="num"></param>
+        /// <returns></returns>
         private string ToTimeFormat(string num)
         {
             string result = num;
@@ -140,7 +144,11 @@ namespace BaliEnterpriseSystems
             }
             return result;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="IsSentMsg"></param>
+        /// <returns></returns>
         private string MessagesHTML(bool IsSentMsg)
         {
             StringBuilder sbhtml = new StringBuilder();

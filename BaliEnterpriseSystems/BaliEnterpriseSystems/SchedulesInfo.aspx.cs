@@ -98,7 +98,7 @@ namespace BaliEnterpriseSystems
                 else
                     sbTimeSlice.Append("'1400', ");
 
-                sbTimeSlice.Append("'1430', '1500', '1530', '1600', '1630', '1700', '1730', '1800', '1830', '1900', '1930', '2000', '2030', '2100', '2130', '2200'");
+                //sbTimeSlice.Append("'1430', '1500', '1530', '1600', '1630', '1700', '1730', '1800', '1830', '1900', '1930', '2000', '2030', '2100', '2130', '2200'");
                 timemodeStr += "timeModeHalfHours;";
             }
             sbTimeSlice.AppendLine("]; </script>");

@@ -1,0 +1,18 @@
+<input type="checkbox" id="selectAllView" onclick="selAllView();" />
+
+<input type="checkbox" id="view1" class="allowview" checked="checked" />
+<input type="checkbox" id="view2" class="allowview" />
+<input type="checkbox" id="view3" class="allowview" />
+<input type="checkbox" id="view4" class="allowview" />
+
+
+function selAllView(){
+	var chkVal = $("#selectAllView").attr("checked");
+	if(chkVal){
+		$(".allowview").attr("checked", "checked");
+	} else {
+		$(".allowview").removeAttr("checked");
+	}
+}
+
+\

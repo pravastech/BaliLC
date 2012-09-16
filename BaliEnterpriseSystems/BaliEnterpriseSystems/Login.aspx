@@ -53,7 +53,7 @@
                 </div>
                 <div class="Row">
             	    <div class="ButtonsDiv">
-                        <a href="javascript:voud(0);" onclick="ssubmit();" class="Button">Sign in</a>
+                        <a href="javascript:void(0);" onclick="ssubmit();" class="Button">Sign in</a>
                     </div>
                 </div>
                 <div class="ForGotDiv">

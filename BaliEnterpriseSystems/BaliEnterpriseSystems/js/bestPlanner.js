@@ -29,7 +29,7 @@ var aryWeeks = ["Sun", "Mon", "Tues", "Wed", "Thur", "Fri", "Sat"];
 var aryMonths = ["Jan", "Feb", "Mar", "Apr", "May", "June", "July", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
 function setbackground(id) {
-    $('#divAttend').css('font-weight', (id == 0) ? 'bold' : 'normal');
+    $('#divCharged').css('font-weight', (id == 0) ? 'bold' : 'normal');
     $('#divInformed').css('font-weight', (id == 1) ? 'bold' : 'normal');
     $('#divAbsent').css('font-weight', (id == 2) ? 'bold' : 'normal');
 }
@@ -177,7 +177,7 @@ function Schedule(schguid, stguid1, stguid2, stguid3, stguid4, stguid5, tuguid, 
 			studname = objStd.firstName + ' ' + objStd.lastName.substr(0,1);
 			studname = studname.substr(0,14);
 		}
-		return '<div style="white-space:nowrap;text-align:right;font-size:10px;cursor:pointer;font-size:12px;"><span style="color:#FFF;background-color:#90A087;font-size:12px;font-weight:bold;" onclick="BestPlanner.editSchedule(\'' + this.schId + '\');">+</span><span onclick="BestPlanner.updAttendance(\'' + this.schId + '\',0);" style="font-size:11px;padding-left:2px;' + (this.attend0==2?'color:#990000;':'') + '">' + studname + '</span> - <span style="text-align:left;font-weight:bold;" onclick="BestPlanner.updAttendance(\'' + this.schId + '\',5);">' + this.TutorName() + '</span></div>'
+		return '<div style="white-space:nowrap;text-align:right;font-size:10px;cursor:pointer;font-size:12px;"><span style="color:#FFF;background-color:#90A087;font-size:12px;font-weight:bold;" onclick="BestPlanner.editSchedule(\'' + this.schId + '\');">+</span><span onclick="BestPlanner.updAttendance(\'' + this.schId + '\',0);" style="font-size:11px;padding-left:2px;' + (this.attend0==2?'color:#990000;':'') + '">' + studname + '(C)</span> - <span style="text-align:left;font-weight:bold;" onclick="BestPlanner.updAttendance(\'' + this.schId + '\',5);">' + this.TutorName() + '</span></div>'
 	}
 	
 	this.getDesc = function(){
@@ -206,7 +206,7 @@ function Schedule(schguid, stguid1, stguid2, stguid3, stguid4, stguid5, tuguid, 
 					thtml += '<span style="color:#FFF;padding:1px;background-color:#90A087;font-size:12px;font-weight:bold;" onclick="BestPlanner.editSchedule(\'' + this.schId + '\');">+</span>';
 					first = false;
 				}
-				thtml += '<span style="padding-left:1px;font-size:11px;" onclick="BestPlanner.updAttendance(\'' + this.schId + '\',\'' + j + '\');">' + stnames[j] + '</span></div>';
+				thtml += '<span style="padding-left:1px;font-size:11px;" onclick="BestPlanner.updAttendance(\'' + this.schId + '\',\'' + j + '\');">' + stnames[j] + '(C)</span></div>';
 				stdCnt++;
 				
 			}
@@ -352,7 +352,7 @@ var BestPlanner = function() {
 				} else {
 					name = objSch.StudentName(objSch["stuGuid" + (Number(stdnum) + 1)]);
 				}
-		        $('#attendanceDiv').dialog({ draggable: false, autoOpen: true, title: 'Attendance - ' + name, position: [dleft, dtop],
+		        $('#attendanceDiv').dialog({ draggable: true, autoOpen: true, title: 'Attendance - ' + name, position: [dleft, dtop],
 		            open: function(event, ui) {
 		                //Set the DB Values
 		                setbackground(objSch["attend" + stdnum]);
@@ -388,7 +388,8 @@ var BestPlanner = function() {
 		    ScheduleInfo[ScheduleInfo.length] = newSch;
 		    this.saveToDB(newSch);
 		    this.ReDraw(divslice);
-			this.RefreshTutorHours();
+		    this.RefreshTutorHours();
+            
 		}
 		
 		, UpdateProgram: function(objSch){
@@ -470,7 +471,7 @@ var BestPlanner = function() {
 		    dropDivs = dropDivs.substr(0, dropDivs.length - 1);
 		    $(dropDivs).droppable({
 		        hoverClass: "ui-state-active",
-		        drop: function(event, ui) {
+		        drop: function (event, ui) {
 		            /* Drag and Drop then setup to new from time, to time and ReDraw */
 		            var divSlice = '#' + $(this)[0].id;
 		            var timeSlice = '#' + ui.draggable[0].id;
@@ -478,11 +479,11 @@ var BestPlanner = function() {
 		            var curFrom = divSlice.split('_')[2];
 
 		            var objSch = $(timeSlice).data();
-		            if (typeof objSch != 'undefined') {
+		            if (objSch && typeof objSch != 'undefined') {
 		                if (objSch.schDate != curDate || objSch.schFrom != curFrom) {
 		                    var odivslice = 'divSlice_' + objSch.schDate + '_' + objSch.schFrom;
-		                    var ndivslice = 'divSlice_' + curDate + '_' + curFrom
-		                    var theIndex = BestPlanner.MaxIndex(ndivslice);
+		                    divSlice = 'divSlice_' + curDate + '_' + curFrom
+		                    var theIndex = BestPlanner.MaxIndex(divSlice);
 		                    objSch.schDate = curDate;
 		                    objSch.schFrom = curFrom;
 		                    objSch.schTo = Number(curFrom) + 100;
@@ -491,12 +492,12 @@ var BestPlanner = function() {
 		                    BestPlanner.updScheduleInfo(objSch);
 		                    BestPlanner.ReIndex(odivslice);
 		                    BestPlanner.saveToDB(objSch);
-		                    BestPlanner.ReDraw(ndivslice);
 		                }
+		                BestPlanner.ReDraw(divSlice);
 		            }
 		        }
 		    });
-		}
+	   	}
 
 		, setEditStudentText: function(textboxId, studentGuid, progGuid) {
 			var pid = 'progTag' + textboxId.replace('studentTag', '');
@@ -549,7 +550,7 @@ var BestPlanner = function() {
 		            $('#tutorTag').val(objTut.Name);
 		        }
 
-		        $('#showScheduleDiv').dialog({ draggable: false, autoOpen: true, width: 350, height: 215, title: 'Edit Schedule', position: [dleft, dtop],
+		        $('#showScheduleDiv').dialog({ draggable: true, autoOpen: true, width: 350, height: 215, title: 'Edit Schedule', position: [dleft, dtop],
 		            buttons: [{ text: "Delete", click: function() {
 		                BestPlanner.DeleteSchedule();
 						$(this).dialog("close");
@@ -618,11 +619,12 @@ var BestPlanner = function() {
 								BestPlanner.AddSchedule(stguid1, stguid2, stguid3, stguid4, stguid5, tuguid, sdate, tfrom, tto);
 							}
 		                    $(this).dialog("close");
-		                }
+                           		                }
 		            } }]
 		        });
 		        $('#showScheduleDiv').css('height', '215px');
-		    }
+		        $(this).dialog.draggable = true;
+		}
 
 		, selectDate: function() {
 		    var datepart = BestPlanner.addDivSlice.split('_')[1];

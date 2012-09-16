@@ -25,6 +25,7 @@
             var pid = 'progTag' + this.id.replace('studentTag', '');
             var innerhtml = '';
             var defaultPGuid = '';
+            guid = guid.extendedproperty.remove;
             for (var x in stdprogs) {
                 innerhtml += stdprogs[x].ToHTML(pid);
                 if (defaultPGuid == '') defaultPGuid = stdprogs[x].guidfield;
@@ -254,9 +255,10 @@
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder2" runat="server">
     <div id="attendanceDiv" style="text-align:center; font-family:Myriad Condensed Web;font-size:medium;display:none">
-        <div id="divAttend" onclick="setbackground(0);" onmouseover="this.style.backgroundColor='#F9999F';" onmouseout="this.style.backgroundColor='#F4F0EC'" style="cursor:pointer;border-top:1px solid #000;border-left:1px solid #000;border-right:1px solid #000;">Attended</div>
-        <div id="divInformed" onclick="setbackground(1);" onmouseover="this.style.backgroundColor='#F9999F';" onmouseout="this.style.backgroundColor='#F4F0EC'" style="cursor:pointer;border-top:1px solid #000;border-left:1px solid #000;border-right:1px solid #000;">Informed</div>
-        <div id="divAbsent" onclick="setbackground(2);" onmouseover="this.style.backgroundColor='#F9999F';" onmouseout="this.style.backgroundColor='#F4F0EC'" style="cursor:pointer;border:1px solid #000;">Absent</div>
+        <div id="divAttend" onclick="setbackground(0);" onmouseover="this.style.backgroundColor='#F9999F';" onmouseout="this.style.backgroundColor='#F4F0EC'" style="cursor:pointer;border-top:1px solid #000;border-left:1px solid #000;border-right:1px solid #000;">Charged</div>
+        <div id="divInformed" onclick="setbackground(1);" onmouseover="this.style.backgroundColor='#F9999F';" onmouseout="this.style.backgroundColor='#F4F0EC'" style="cursor:pointer;border-top:1px solid #000;border-left:1px solid #000;border-right:1px solid #000;">No Charge</div>
+        <div id="divAbsent" onclick="setbackground(2);" onmouseover="this.style.backgroundColor='#F9999F';" onmouseout="this.style.backgroundColor='#F4F0EC'" style="cursor:pointer;border:1px solid #000;">Re-Schedule</div>
+        <div id="divNochargeReschedule" onclick="setbackground(0);" onmouseover="this.style.backgroundColor='#F9999F';" onmouseout="this.style.backgroundColor='#F4F0EC'" style="cursor:pointer;border-top:1px solid #000;border-left:1px solid #000;border-right:1px solid #000;">No Charge and Reschedule</div>
         <div style="font-size:small" id="divNotes">Notes: <input type="text" id="notes" name="notes" size="25" /></div>
     </div>
 </asp:Content>

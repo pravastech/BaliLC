@@ -22,7 +22,7 @@ namespace BaliEnterpriseSystems.BestObjects
         {
             get
             {
-                return ConfigurationSettings.AppSettings["dbConString"];
+                return ConfigurationManager.AppSettings["dbConString"];
             }
         }
 

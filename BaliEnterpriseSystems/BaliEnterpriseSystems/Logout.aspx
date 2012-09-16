@@ -21,10 +21,14 @@
     </div>
 
 <div class="MidCenDiv">
-        <div style="background-color:#f9f9f9;text-align:center;padding-top:100px;font-family:Tahoma;font-size:large;">
-            Your current session is ended, You have logged out.
-            <br /><a href="Login.aspx">Please Login</a>
-        </div></div>
+        <div style="background-color:#f9f9f9;text-align:center;padding-top:100px;font-family:Tahoma;font-size:large;">
+
+            Your current session is ended, You have logged out.
+
+            <br /><a href="Login.aspx">Please Login</a>
+
+        </div>
+</div>
 <div id="FooterDiv">
     <div class="FootNoteL">&copy; 2011 - Bali Enterprise System - Terms &amp; Conditions</div>
     <div class="FootNoteR">Bali Learning Center, 2808 Park Ave. Suite C Merced CA 95348</div>
